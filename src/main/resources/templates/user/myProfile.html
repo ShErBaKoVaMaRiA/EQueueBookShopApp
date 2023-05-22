@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль</title>
+    <link href="styleProfile.css" rel="stylesheet">
+    <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body action="/myProfile">
+<div class="container">
+    <div class="screen">
+        <form class="login">
+            <div class="login__field">
+                <input type="email" class="login__input" placeholder="E-mail">
+            </div>
+            <div class="login__field">
+                <input type="password" class="login__input" placeholder="Пароль">
+            </div>
+            <div class="login__field">
+                <input type="text" class="login__input" placeholder="Фамилия">
+            </div>
+            <div class="login__field">
+                <input type="text" class="login__input" placeholder="Имя">
+            </div>
+            <div class="login__field">
+                <input type="text" class="login__input" placeholder="Отчество">
+            </div>
+        </form>
+        <div class="btn-login">
+            <button class="social-login">Изменить профиль</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

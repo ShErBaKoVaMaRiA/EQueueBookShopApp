@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Мероприятия</title>
+    <link href="styleEvents.css" rel="stylesheet">
+    <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body action="/viewEvents">
+<div class="container">
+    <div class="cards">
+        <div class="card" th:each="el : ${events}">
+            <img th:src="${el.imageEvent}" style="width:100%">
+            <div class="container">
+                <h1><b th:text="${el.name}"></b></h1>
+                <h3><p th:text="${el.dateBegin}"></p></h3>
+                <p th:text="${el.bookShops.name}"></p>
+                <p th:text="${el.bookShops.address}"></p>
+                <a class="btn" th:action="'/viewEvents/'+${el.UID}+'/signUp'" method="post">Зарегистрироваться на мероприятие</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

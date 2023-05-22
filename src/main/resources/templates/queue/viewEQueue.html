@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Очередь</title>
+    <link href="styleQueue.css" rel="stylesheet">
+    <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body action="/viewEQueue">
+<div class="myQueue">
+    <button class="queueElement">Записаться в очередь</button>
+    <p class="queueElement">Статус - В ожидании</p>
+    <p class="queueElement"> Номер - П13</p>
+    <button class="queueElement">Отменить запись</button>
+
+</div>
+<div class="container">
+    <div class="queues">
+        <div class="queue1">
+            <table class="table">
+                <tr>
+                    <th>Номер клиента</th>
+                    <th>Номер окна</th>
+                </tr>
+                <tr th:each="el : ${queueWindow}">
+                    <td th:text="${el.numberClient}"></td>
+                    <td th:text="${el.windows.UID}"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="queue2">
+            <table class="table">
+                <tr>
+                    <th>Номер клиента</th>
+                </tr>
+                <tr th:each="el : ${queue}">
+                    <td th:text="${el.numberClient}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

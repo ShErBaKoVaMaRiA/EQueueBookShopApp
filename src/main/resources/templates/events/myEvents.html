@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Мероприятия</title>
+    <link href="styleEvents.css" rel="stylesheet">
+    <header th:insert="/fragments/header :: headerMain"></header>
+</head>
+<body action="/myEvents">
+<div class="container">
+    <div class="cards">
+        <div class="card" th:each="el : ${signupevents}">
+            <img th:src="${el.events.imageEvent}" style="width:100%">
+            <div class="container">
+                <h1><b th:text="${el.events.name}"></b></h1>
+                <h3><p th:text="${el.events.dateBegin}"></p></h3>
+                <p th:text="${el.events.bookShops.name}"></p>
+                <p th:text="${el.events.bookShops.address}"></p>
+                <p th:text="${el.client.email}"></p>
+                <a class="btn" th:action="'/myEvents/'+${el.UID}+'/del'" method="post">Удалить регистрацию</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

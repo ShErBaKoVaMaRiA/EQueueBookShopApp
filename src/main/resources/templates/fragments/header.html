@@ -1,0 +1,18 @@
+<header th:fragment="headerMain" class="site-navbar site-navbar-target bg-white" role="banner">
+  <link rel="stylesheet" th:href="@{/styleHeader.css}">
+  <nav class="top-menu">
+    <ul class="menu-main">
+      <li class="left-item"><a href="viewEQueue">Очередь</a></li>
+      <li class="left-item"><a href="viewEvents">Мероприятия</a></li>
+      <li class="left-item"><a href="/myEvents">Мои мероприятия</a></li>
+      <li class="right-item"><a href="/authorization">Выход</a></li>
+      <li class="right-item"><a href="/myProfile">Профиль</a></li>
+    </ul>
+    <label class="navbar-header" id="headerLabel"></label>
+    <script>
+      var down = document.getElementById('headerMain');
+      var title = document.getElementsByTagName("Title")[0];
+      headerLabel.innerHTML = title.innerHTML;
+    </script>
+  </nav>
+</header>
