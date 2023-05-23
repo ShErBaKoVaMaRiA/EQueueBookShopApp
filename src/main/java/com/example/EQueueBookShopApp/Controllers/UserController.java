@@ -8,6 +8,9 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 @Controller
 public class UserController {
 
@@ -24,6 +27,7 @@ public class UserController {
     @GetMapping("/myProfile")
     private String MyProfileView()
     {
+
         return "user/myProfile";
     }
     @GetMapping("/logout")
@@ -35,4 +39,5 @@ public class UserController {
         return "redirect:/login?logout";
 
     }
+
 }
