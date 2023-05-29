@@ -13,9 +13,8 @@ import org.springframework.stereotype.Repository;
 public interface SignUpRepository extends CrudRepository<SignUpEvents,Long> {
     public SignUpEvents findSignUpEventsByUID (Long uid);
     Iterable<SignUpEvents> findByClient_UID (Long uid);
-    @Transactional
     @Modifying
-    @Query(value="exec SingUpEvent_Delete @ID_SignUpEvent=:uid;",nativeQuery=true)
-    void delSignUp(@Param("uid")Long uid);
+    @Query(value="delete from [dbo].[Table_SignUpEvents] where [ID_SignUpEvent]= ? ;",nativeQuery=true)
+    void delSignUp(Integer uid);
 
 }

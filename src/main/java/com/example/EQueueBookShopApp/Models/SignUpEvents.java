@@ -8,7 +8,7 @@ public class SignUpEvents {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID_Signupevent")
-    private Long UID;
+    private Integer UID;
     @ManyToOne(optional = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "Client_ID", foreignKey = @ForeignKey(name = "FK__Table_Sig__Clien__6477ECF3"))
     private Users client;
@@ -24,11 +24,11 @@ public class SignUpEvents {
         this.events = events;
     }
 
-    public Long getUID() {
+    public int getUID() {
         return UID;
     }
 
-    public void setUID(Long UID) {
+    public void setUID(int UID) {
         this.UID = UID;
     }
 

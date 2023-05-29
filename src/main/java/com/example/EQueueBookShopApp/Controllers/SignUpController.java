@@ -8,6 +8,7 @@ import com.example.EQueueBookShopApp.Repositories.BookShopsRepository;
 import com.example.EQueueBookShopApp.Repositories.EventsRepository;
 import com.example.EQueueBookShopApp.Repositories.SignUpRepository;
 import com.example.EQueueBookShopApp.Repositories.UsersRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -49,9 +50,11 @@ public class SignUpController {
         return auth.getName();
     }
     @PostMapping("/myEvents/{id}/del")
+    @Transactional
     public String deleteSignUp(@PathVariable Long id)
     {
-        signUpRepository.delSignUp(id);
+        SignUpEvents sign = signUpRepository.findById(id).orElseThrow();
+        signUpRepository.delSignUp(sign.getUID());
         return "redirect:/myEvents";
     }
 //    @GetMapping("/viewEvents")
