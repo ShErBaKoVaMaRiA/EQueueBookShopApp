@@ -33,7 +33,7 @@ img {
 body{
     background: #d2bb9f;
 }
-a.btn {
+button.btn {
     display: inline-block;
     text-decoration: none;
     text-transform: uppercase;
@@ -48,18 +48,18 @@ a.btn {
     border-radius: 25px;
     border: 3px solid #282828;
 }
-a.btn:hover {
+button.btn:hover {
     color: #282828;
     background: #d2bb9f;
 }
-a.btn span {
+button.btn span {
     opacity: 0;
     padding-left: 5px;
     padding-right: 5px;
     font-weight: bold;
     transition: 0.4s ease-in-out;
 }
-a.btn:hover span {
+button.btn:hover span {
     opacity: 1;
     padding-left: 10px;
     padding-right: 10px;

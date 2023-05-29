@@ -17,7 +17,9 @@
                 <p th:text="${el.events.bookShops.name}"></p>
                 <p th:text="${el.events.bookShops.address}"></p>
                 <p th:text="${el.client.email}"></p>
-                <a class="btn" th:action="'/myEvents/'+${el.UID}+'/del'" method="post">Удалить регистрацию</a>
+                <form th:action="'/myEvents/'+${el.UID}+'/del'" method="post">
+                    <button type="submit" class="btn">Удалить регистрацию</button>
+                </form>
             </div>
         </div>
     </div>

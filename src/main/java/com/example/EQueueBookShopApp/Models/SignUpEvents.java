@@ -9,11 +9,11 @@ public class SignUpEvents {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID_Signupevent")
     private Long UID;
-    @JoinColumn(name = "Client_ID", nullable = false, foreignKey = @ForeignKey(name = "FK__Table_Sig__Clien__6477ECF3"))
     @ManyToOne(optional = true, cascade = CascadeType.ALL)
+    @JoinColumn(name = "Client_ID", foreignKey = @ForeignKey(name = "FK__Table_Sig__Clien__6477ECF3"))
     private Users client;
-    @JoinColumn(name = "Event_ID", nullable = false, foreignKey = @ForeignKey(name = "FK__Table_Sig__Event__656C112C"))
     @ManyToOne(optional = true, cascade = CascadeType.ALL)
+    @JoinColumn(name = "Event_ID", foreignKey = @ForeignKey(name = "FK__Table_Sig__Event__656C112C"))
     private Events events;
 
     public SignUpEvents() {

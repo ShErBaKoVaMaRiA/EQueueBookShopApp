@@ -24,16 +24,15 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/", "/css/**", "/login", "/registration", "/myProfile").permitAll()
-                        .requestMatchers("/", "/css/**", "/myProfile", "myEvents", "viewEvents", "viewEQueue").hasAuthority("Клиент").anyRequest()
+                        .requestMatchers("/", "/css/**", "/login", "/registration").permitAll()
+                        .requestMatchers("/", "/css/**", "/myProfile", "/myEvents", "/viewEvents", "/viewEQueue","/**").hasAuthority("Клиент").anyRequest()
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")
                         .defaultSuccessUrl("/myProfile")
                         .permitAll()
                 )
-                .logout((logout) -> logout.permitAll()).csrf().disable();
-
+                .logout((logout) -> logout.permitAll()).cors().and().csrf().disable();
         return http.build();
     }
 @Autowired
@@ -43,7 +42,7 @@ private DataSource dataSource;
         auth.jdbcAuthentication()
                 .passwordEncoder(NoOpPasswordEncoder.getInstance())
                 .dataSource(dataSource)
-                .usersByUsernameQuery("SELECT EmailUser, PasswordUser,ID_User FROM table_Users WHERE Role_ID=5 and EmailUser=?")
-                .authoritiesByUsernameQuery("SELECT u.EmailUser, ur.NameRole FROM table_Users u INNER JOIN Table_Roles ur ON u.Role_ID = ur.ID_Role WHERE  Role_ID=5 and u.EmailUser=?");
+                .usersByUsernameQuery("SELECT EmailUser, PasswordUser,ID_User FROM table_Users WHERE Role_ID=5 and ConsentPersonalData='Y' and EmailUser=?")
+                .authoritiesByUsernameQuery("SELECT u.EmailUser, ur.NameRole FROM table_Users u INNER JOIN Table_Roles ur ON u.Role_ID = ur.ID_Role WHERE Role_ID=5 and ConsentPersonalData='Y' and u.EmailUser=?");
     }
 }
