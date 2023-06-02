@@ -15,7 +15,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
 }
 .screen {
     height: 600px;
@@ -36,7 +35,7 @@ body {
     border: none;
     border-bottom: 2px solid #ecd7bd;
     background: none;
-    padding: 10px;
+    padding: 5px;
     padding-left: 24px;
     font-weight: 700;
     width: 100%;
@@ -51,45 +50,30 @@ body {
     border-bottom-color: #d2bb9f;
 }
 
-.login__submit {
-    background: #fff;
-    font-size: 28px;
-    margin-top: 30px;
-    padding: 16px 20px;
-    border-radius: 26px;
-    border: 1px solid #ecd7bd;
-    text-transform: uppercase;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    color: #736453;
-    box-shadow: 0px 2px 2px #d2bb9f;
-    cursor: pointer;
-    transition: .2s;
-}
-
-.login__submit:active,
-.login__submit:focus,
-.login__submit:hover {
-    border-color: #d2bb9f;
-    outline: none;
-}
-
 .btn-login{
-    size: 25px;
+    size: 22px;
     padding: 10px 10px 10px 10px;
+    border: #d2bb9f;
+    height: 60px;
+    font-weight: 700;
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #736453;
+    font-size: 25px;
+    color: #d2bb9f;
+    border-radius: 10px 10px 10px 10px;
+    width: 100%;
 }
 
 .social-login {
     border: #d2bb9f;
-    height: 80px;
+    height: 60px;
     width: 250px;
     font-weight: 700;
     text-align: center;
+    display: flex;
     align-items: center;
     background-color: #736453;
     font-size: 25px;

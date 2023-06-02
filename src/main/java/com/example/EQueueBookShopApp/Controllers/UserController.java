@@ -1,9 +1,13 @@
 package com.example.EQueueBookShopApp.Controllers;
 
+import com.example.EQueueBookShopApp.Models.Roles;
 import com.example.EQueueBookShopApp.Models.Users;
+import com.example.EQueueBookShopApp.Repositories.RolesRepository;
 import com.example.EQueueBookShopApp.Repositories.UsersRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -11,36 +15,44 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @Controller
 @PreAuthorize("hasAuthority('Клиент')")
 public class UserController {
+
+    @Autowired
+    RolesRepository rolesRepository;
     @Autowired
     UsersRepository usersRepository;
+
     @GetMapping("/login")
     private String AuthView()
     {
         return "user/authorization";
     }
     @GetMapping("/registration")
-    private String RegView()
+    private String RegView(Users users)
     {
         return "user/registration";
     }
-    @GetMapping("/myProfile")
-    private String MyProfileView(Model model){
-        Users user_obj = usersRepository.findByEmail(getCurrentEmail());
-        model.addAttribute("one_user", user_obj);
-        return "user/myProfile";
-    }
-    public String getCurrentEmail() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-            return auth.getName();
+
+    @PostMapping("/registration")
+    @Transactional
+    public String AddEmployee(@Valid Users users, BindingResult bindingResult,  Model model) {
+        if (bindingResult.hasErrors()) {
+            return "user/registration";
+        }
+        Roles role_obj = rolesRepository.findByName("Клиент");
+        Users usersAdd = new Users(users.getEmail(),users.getPassword(),role_obj,users.getSurname(),users.getName(),users.getMiddlename(),"Y");
+        usersRepository.addUsers(users.getEmail(),users.getPassword(),5,users.getSurname(),users.getName(),users.getMiddlename(),"Y");
+        return "redirect:/authorization";
     }
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {

@@ -1,6 +1,8 @@
 package com.example.EQueueBookShopApp.Models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name="Table_Users")
@@ -9,20 +11,27 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID_User")
     private Long UID;
+    @Pattern(regexp="^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$",message="Неверный формат")
+    @NotEmpty(message =  "Поле не может быть пустым")
     @Column(name="Emailuser")
     private String email;
+    @Pattern(regexp = "^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!#$%&?.,_ \"]).*$",message="Неверный формат")
+//    @NotEmpty(message =  "Поле не может быть пустым")
     @Column(name="Passworduser")
     private String password;
 
     @JoinColumn(name = "Role_ID", nullable = false, foreignKey = @ForeignKey(name = "FK__Table_Use__Role___440B1D61"))
     @ManyToOne(optional = true, cascade = CascadeType.ALL)
     private Roles roles;
+    @NotEmpty(message =  "Поле не может быть пустым")
     @Column(name="Surnameuser")
     private String surname;
+    @NotEmpty(message =  "Поле не может быть пустым")
     @Column(name="Nameuser")
     private String name;
     @Column(name="Middlenameuser")
     private String middlename;
+
     @Column(name="Consentpersonaldata")
     private String personalData;
 

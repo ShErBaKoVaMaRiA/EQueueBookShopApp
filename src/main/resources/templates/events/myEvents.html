@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Мероприятия</title>
+    <title>Мои мероприятия</title>
     <link href="/css/styleEvents.css" rel="stylesheet">
     <header th:insert="/fragments/header :: headerMain"></header>
 </head>
 <body action="/myEvents">
-<div class="container">
     <div class="cards">
         <div class="card" th:each="el : ${signupevents}">
             <img th:src="${el.events.imageEvent}" style="width:100%">
@@ -16,13 +15,11 @@
                 <h3><p th:text="${el.events.dateBegin}"></p></h3>
                 <p th:text="${el.events.bookShops.name}"></p>
                 <p th:text="${el.events.bookShops.address}"></p>
-                <p th:text="${el.client.email}"></p>
                 <form th:action="'/myEvents/'+${el.UID}+'/del'" method="post">
                     <button type="submit" class="btn">Удалить регистрацию</button>
                 </form>
             </div>
         </div>
-    </div>
 </div>
 </body>
 </html>

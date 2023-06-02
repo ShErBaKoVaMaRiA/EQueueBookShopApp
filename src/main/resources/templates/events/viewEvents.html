@@ -16,7 +16,9 @@
                 <h3><p th:text="${el.dateBegin}"></p></h3>
                 <p th:text="${el.bookShops.name}"></p>
                 <p th:text="${el.bookShops.address}"></p>
-                <a class="btn" th:action="'/viewEvents/'+${el.UID}+'/signUp'" method="post">Зарегистрироваться на мероприятие</a>
+                <form th:action="'/viewEvents/'+${el.UID}+'/signUp'" method="post">
+                    <button type="submit" class="btn">Зарегистрироваться на мероприятие</button>
+                </form>
             </div>
         </div>
     </div>

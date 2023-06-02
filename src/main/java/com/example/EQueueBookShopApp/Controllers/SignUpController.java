@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 @PreAuthorize("hasAuthority('Клиент')")
 public class SignUpController {
@@ -57,6 +59,20 @@ public class SignUpController {
         signUpRepository.delSignUp(sign.getUID());
         return "redirect:/myEvents";
     }
+
+    @PostMapping("/viewEvents/{id}/signUp")
+    @Transactional
+    public String addSignUp(@PathVariable Long id)
+    {
+        Events event = eventsRepository.findById(id).orElseThrow();
+        Users user = usersRepository.findByEmail(getCurrentEmail());
+        List<SignUpEvents> findsignUp = signUpRepository.findSignUpEventsByClient_UIDAndAndEvents_UID(user.getUID(),event.getUID());
+        if(findsignUp.size()==0) {
+            signUpRepository.addSignUp(Math.toIntExact(user.getUID()), Math.toIntExact(event.getUID()));
+        }
+        return "redirect:/viewEvents";
+    }
+
 //    @GetMapping("/viewEvents")
 //    public String post() {
 //        return "events/viewEvents";

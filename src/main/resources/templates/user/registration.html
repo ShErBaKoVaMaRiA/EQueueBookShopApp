@@ -5,27 +5,35 @@
     <title>Регистрация</title>
     <link href="/css/styleReg.css" rel="stylesheet">
 </head>
-<body action="/registration">
+<body>
 <div class="container">
     <div class="screen">
         <h1>Регистрация</h1>
-            <form class="login">
+        <h3 style="color: #BF4930; padding:5px; text-align: center">При регистрации вы даете согласие на обработку персональных данных!</h3>
+        <form class="login" th:action="@{/registration}" method="post" th:object="${users}">
                 <div class="login__field">
-                    <input type="email" class="login__input" placeholder="E-mail">
+                    <input type="email" class="login__input" placeholder="E-mail" name="email" th:field="*{email}">
+                    <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red"></div>
                 </div>
                 <div class="login__field">
-                    <input type="password" class="login__input" placeholder="Пароль">
+                    <input type="password" class="login__input" placeholder="Пароль" name="password" th:field="*{password}">
+                    <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color: red"></div>
                 </div>
                 <div class="login__field">
-                    <input type="text" class="login__input" placeholder="Фамилия">
+                    <input type="text" class="login__input" placeholder="Фамилия" name="surname" th:field="*{surname}">
+                    <div th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}" style="color: red"></div>
                 </div>
                 <div class="login__field">
-                    <input type="text" class="login__input" placeholder="Имя">
+                    <input type="text" class="login__input" placeholder="Имя" name="name" th:field="*{name}">
+                    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red"></div>
                 </div>
                 <div class="login__field">
-                    <input type="text" class="login__input" placeholder="Отчество">
+                    <input type="text" class="login__input" placeholder="Отчество" name="middlename" th:field="*{middlename}">
+                    <div th:if="${#fields.hasErrors('middlename')}" th:errors="*{middlename}" style="color: red"></div>
                 </div>
-                <a class="social-reg" href="/login">Регистрация</a>
+            <button class="button login__submit">
+                <span class="button__text">Регистрация</span>
+            </button>
             </form>
         <div class="btn-login">
         <a class="social-login" href="/login">Авторизация</a>
