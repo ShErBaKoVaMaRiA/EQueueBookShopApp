@@ -16,6 +16,7 @@ public interface UsersRepository extends CrudRepository<Users,Long> {
     public Users findByEmail(String email);
     @Modifying
     @Query(value="exec User_Insert @EmailUser= ?,@PasswordUser= ?,@Role_ID=?,@SurnameUser= ?,@NameUser= ?,@MiddleNameUser= ?,@ConsentPersonalData= ?;",nativeQuery=true)
+    @Transactional
     void addUsers(String email,String password,Integer role,String surname,String name,String middlename,String personal);
     @Modifying
     @Query(value="exec User_Update @ID_User = ?,@EmailUser= ?,@PasswordUser= ?,@Role_ID=?,@SurnameUser= ?,@NameUser= ?,@MiddleNameUser= ?,@ConsentPersonalData= ?;",nativeQuery=true)

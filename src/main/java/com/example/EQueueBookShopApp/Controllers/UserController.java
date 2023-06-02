@@ -44,15 +44,12 @@ public class UserController {
     }
 
     @PostMapping("/registration")
-    @Transactional
     public String AddEmployee(@Valid Users users, BindingResult bindingResult,  Model model) {
         if (bindingResult.hasErrors()) {
             return "user/registration";
         }
-        Roles role_obj = rolesRepository.findByName("Клиент");
-        Users usersAdd = new Users(users.getEmail(),users.getPassword(),role_obj,users.getSurname(),users.getName(),users.getMiddlename(),"Y");
         usersRepository.addUsers(users.getEmail(),users.getPassword(),5,users.getSurname(),users.getName(),users.getMiddlename(),"Y");
-        return "redirect:/authorization";
+        return "user/authorization";
     }
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
