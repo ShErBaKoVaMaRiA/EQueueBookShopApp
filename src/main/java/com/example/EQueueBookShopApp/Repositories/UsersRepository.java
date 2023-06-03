@@ -6,9 +6,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
-
+//Класс репозитория пользователей
 @Repository
 public interface UsersRepository extends CrudRepository<Users,Long> {
     public Users findUsersByUID(Long uid);

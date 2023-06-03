@@ -3,7 +3,7 @@ package com.example.EQueueBookShopApp.Models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
-
+//Класс модели таблицы пользователей
 @Entity
 @Table(name="Table_Users")
 public class Users {

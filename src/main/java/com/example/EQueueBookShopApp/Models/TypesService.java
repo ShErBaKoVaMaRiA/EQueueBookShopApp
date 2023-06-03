@@ -1,7 +1,7 @@
 package com.example.EQueueBookShopApp.Models;
 
 import jakarta.persistence.*;
-
+//Класс модели таблицы типов обслуживания
 @Entity
 @Table(name="Table_Typesservice")
 public class TypesService {

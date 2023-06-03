@@ -1,5 +1,4 @@
 package com.example.EQueueBookShopApp.Controllers;
-
 import com.example.EQueueBookShopApp.Models.BookShops;
 import com.example.EQueueBookShopApp.Models.Events;
 import com.example.EQueueBookShopApp.Models.SignUpEvents;
@@ -20,7 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
-
+//Класс контроллера регистраций на мероприятия
 @Controller
 @PreAuthorize("hasAuthority('Клиент')")
 public class SignUpController {
@@ -72,9 +71,4 @@ public class SignUpController {
         }
         return "redirect:/viewEvents";
     }
-
-//    @GetMapping("/viewEvents")
-//    public String post() {
-//        return "events/viewEvents";
-//    }
 }

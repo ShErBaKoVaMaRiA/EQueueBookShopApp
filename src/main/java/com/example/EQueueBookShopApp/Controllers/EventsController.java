@@ -4,12 +4,10 @@ import com.example.EQueueBookShopApp.Models.Events;
 import com.example.EQueueBookShopApp.Repositories.BookShopsRepository;
 import com.example.EQueueBookShopApp.Repositories.EventsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.*;
-
+//Класс контроллера мероприятий
 @Controller
 public class EventsController {
     @Autowired
@@ -26,8 +24,4 @@ public class EventsController {
 
         return "events/viewEvents";
     }
-//    @GetMapping("/viewEvents")
-//    public String post() {
-//        return "events/viewEvents";
-//    }
 }

@@ -2,7 +2,7 @@ package com.example.EQueueBookShopApp.Models;
 
 
 import jakarta.persistence.*;
-
+//Класс модели таблицы мероприятий
 @Entity
 @Table(name="Table_Events")
 public class Events {
